@@ -22,3 +22,8 @@ provider "azurerm" {
   client_secret   = var.ARM_CLIENT_SECRET
   tenant_id       = var.ARM_TENANT_ID
 }
+
+resource "azurerm_resource_group" "main" {
+    name = "erlandsentech"
+    location = "norwayeast"
+}
