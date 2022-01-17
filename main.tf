@@ -7,13 +7,12 @@ terraform {
   }
   required_version = ">= 1.1.3"
 
-cloud {
+  cloud {
     organization = "erlandsen_tech"
-    workspaces  {
-        name = "erlandsentech_infrastructure"
+    workspaces {
+      name = "erlandsentech_infrastructure"
     }
-}
-
+  }
 }
 
 provider "azurerm" {
@@ -26,4 +25,10 @@ provider "azurerm" {
 resource "azurerm_resource_group" "main" {
   name     = "erlandsen_tech"
   location = "norwayeast"
+}
+
+resource "azurerm_static_site" "main" {
+    name = "erlandsen_tech"
+    resource_group_name = azurerm_resource_group.main.name
+    location = azurerm_resource_group.main.location
 }
