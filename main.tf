@@ -25,7 +25,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "main" {
   name     = "erlandsentech"
-  location = "norwayeast"
+  location = "westeurope"
 }
 
 resource "azurerm_static_site" "main" {
