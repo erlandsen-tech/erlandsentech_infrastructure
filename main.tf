@@ -28,7 +28,7 @@ resource "azurerm_resource_group" "main" {
 }
 
 resource "azurerm_static_site" "main" {
-    name = "erlandsen_tech"
-    resource_group_name = azurerm_resource_group.main.name
-    location = azurerm_resource_group.main.location
+  name                = "erlandsentech"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
 }
