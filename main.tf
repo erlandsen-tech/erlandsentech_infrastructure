@@ -33,3 +33,16 @@ resource "azurerm_static_site" "main" {
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
 }
+resource "azurerm_dns_cname_record" "main" {
+  name                = "erlandsen"
+  zone_name           = "tech"
+  resource_group_name = azurerm_resource_group.main.name
+  ttl                 = 300
+  record              = azurerm_static_site.main.default_host_name
+}
+
+resource "azurerm_static_site_custom_domain" "main" {
+  static_site_id  = azurerm_static_site.main.id
+  domain_name     = "${azurerm_dns_cname_record.main.name}.${azurerm_dns_cname_record.main.zone_name}"
+  validation_type = "cname-delegation"
+}
