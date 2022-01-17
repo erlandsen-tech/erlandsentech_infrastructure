@@ -6,6 +6,14 @@ terraform {
     }
   }
   required_version = ">= 1.1.3"
+
+cloud {
+    organization = "erlandsen_tech"
+    workspaces  {
+        name = "erlandsentech_infrastructure"
+    }
+}
+
 }
 
 provider "azurerm" {
